@@ -13,18 +13,18 @@ function drawGraph(r) {
     drawArrow(context, 10, center, 410, center);
     drawArrow(context, center, 410, center, 10);
     context.globalAlpha = 0.25;
-    context.fillRect(center - r * l, center, r * l, r * l / 2);
+    context.fillRect(center - r * l, center, r * l, -r * l / 2);
 
     context.beginPath();
     context.moveTo(center, center);
-    context.lineTo(center, center - r * l);
-    context.lineTo(center - r * l, center);
+    context.lineTo(center, center + r * l);
+    context.lineTo(center + r * l, center);
     context.closePath();
     context.fill();
 
     context.beginPath();
-    context.moveTo(center + r * l, center);
-    context.arc(center, center, r * l, 0, Math.PI / 2);
+    context.moveTo(center, center);
+    context.arc(center, center, r * l, Math.PI / 2, -Math.PI );
     context.lineTo(center, center);
     context.closePath();
     context.fill();
@@ -55,20 +55,20 @@ $(document).ready(function () {
     canvas.addEventListener("click", function (e) {
         let offset = $(canvas).offset();
         let x = Math.round((e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft
-            - Math.floor(offset.left) - center) / l);
-        if (x > 5) {
-            x = 5;
+            - Math.floor(offset.left) - center)*2 / l)/2.0;
+        if (x > 2) {
+            x = 2;
         }
-        if (x < -3) {
-            x = -3;
+        if (x < -2) {
+            x = -2;
         }
         let y = ((center - (e.clientY + document.body.scrollTop + document.documentElement.scrollTop
             - Math.floor(offset.top) + 1)) / l).toFixed(9);
-        if (y > 3) {
-            y = 3;
+        if (y > 5) {
+            y = 5;
         }
-        if (y < -5) {
-            y = -5;
+        if (y < -3) {
+            y = -3;
         }
 
         $('#x').val(x);
@@ -79,12 +79,6 @@ $(document).ready(function () {
     });
 });
 
-function clearDots() {
-    const canvas = document.getElementById("graphic");
-    const context = canvas.getContext('2d');
-    context.clearRect(0, 0, 420, 420);
-    drawGraph(document.getElementById('r').value);
-}
 
 function drawArrow(context, fromx, fromy, tox, toy) {
     const headlen = 10;

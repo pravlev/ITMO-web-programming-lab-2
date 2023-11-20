@@ -4,8 +4,8 @@ $(document).ready(function () {
             y: {
                 required: true,
                 number: true,
-                min: -5,
-                max: 3
+                min: -3,
+                max: 5
             },
         },
         messages: {

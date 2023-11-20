@@ -24,30 +24,29 @@
             <div class="x-select">
                 <label for="x">select x</label><br>
                 <select id="x" class="select" name="x">
-                    <option value="-3">-3</option>
                     <option value="-2">-2</option>
+                    <option value="-1.5">-1.5</option>
                     <option value="-1">-1</option>
+                    <option value="-0.5">-0.5</option>
                     <option value="0">0</option>
+                    <option value="0.5">0.5</option>
                     <option value="1">1</option>
+                    <option value="1.5">1.5</option>
                     <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
                 </select>
             </div>
             <div class="y-text">
                 <label for="y" id="y-label">enter y</label><br>
-                <input id="y" maxlength="12" placeholder="-5...3" type="text" name="y"/>
+                <input id="y" maxlength="12" placeholder="-3...5" type="text" name="y"/>
             </div>
-            <div class="r-select">
-                <label for="r">select r</label><br>
-                <select id="r" class="select" name="r">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+            <div class="r-buttons">
+                <label for="r" id="r-label">select r</label><br>
+                <input type="hidden" id="r" value="1" name="r">
+                <input class="inputR" type="Button" size="10"  value="1" disabled="true" onclick="saveR(this)">
+                <input class="inputR" type="Button" size="10"  value="2" onclick="saveR(this)">
+                <input class="inputR" type="Button" size="10"  value="3" onclick="saveR(this)">
+                <input class="inputR" type="Button" size="10"  value="4" onclick="saveR(this)">
+                <input class="inputR" type="Button" size="10"  value="5" onclick="saveR(this)">
             </div>
             <input id="hidden-timezone" type="hidden" name="timezone" value="">
             <div class="button-wrap" id="submit-wrap">
@@ -94,6 +93,7 @@
 <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="js/validator.js"></script>
 <script src="js/graph.js"></script>
+<script src="js/saveR.js"></script>
 <script>
     $(document).ready(function () {
         drawDots(1);
